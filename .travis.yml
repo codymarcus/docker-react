@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t codymarcus/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true codymarcus/docker-react npm run test
